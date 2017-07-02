@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breakout</title>
+    <link rel="stylesheet" type="text/css" href="breakout.css">
+</head>
+<body id="menu">
+    <h1 id="gameTitle">Breakout</h1>
+    <!--<abbr title="Reference to &quot;A HIDEO KOJIMA GAME&quot;"><span id="gameAuthor"><h1>A</h1> <h1>Tomasz Zajac</h1> <h1>game</h1></span></abbr>-->
+    <div id="mainMenu">
+        <div id="menuTitle">
+            <h1 class="centerAlign">Help</h1>
+        </div>
+        <textarea readonly id="helpContent">
+        </textarea>
+        <a href="index.html">
+            <div class="menuBtn">
+                &lt; Go back
+            </div>
+        </a>
+        <span id="goodLuck">Good luck!</span>
+    </div>
+</body>
+<script>
+    addEventListener("load", function()
+    {
+        var helpStr = "Welcome to Breakout! Here are some tips that will get you started.";
+        helpStr += "\n\nYour goal is to bounce the ball off the paddle at the bottom of the screen so that it hits a block which will then disappear upon impact."
+        helpStr += "\n\nYour ULTIMATE goal, however, is to clear the screen from the blocks... okay, this isn't the \"ultimate\" goal either, because you then go into the next stage and the game never ends (until you miss the ball and lose).";
+        helpStr += "\n\nMove your mouse to move the paddle.";
+        helpStr += "\nPress the Escape key to pause the game.";
+
+        document.getElementById("helpContent").value = helpStr;
+        
+        // Left for web server scripting
+        /*
+        // Check if high contrast mode was enabled previously
+        if(window.localStorage.getItem("hcEnabled") == 1)
+            enableHC();
+        */
+    });
+    
+    function enableHC()
+    {
+        var btns = document.getElementsByTagName("a");
+        for(var i = 0; i < btns.length; i++)
+        {
+            if(btns[i].childNodes[1].className == "menuBtn")
+                btns[i].childNodes[1].className = "menuBtnHC";
+        }
+        document.body.id = "menuHC";
+        document.getElementById("mainMenu").id = "mainMenuHC";
+        document.getElementById("menuTitle").id = "menuTitleHC";
+        document.getElementById("helpContent").id = "helpContentHC";
+        document.getElementById("hcEnabled").checked = true;
+        window.localStorage.setItem("hcEnabled", 1);
+        console.log(btns);
+    }
+    
+    function disableHC()
+    {
+        var btns = document.getElementsByTagName("a");
+        for(var i = 0; i < btns.length; i++)
+        {
+            if(btns[i].childNodes[1].className == "menuBtnHC")
+                btns[i].childNodes[1].className = "menuBtn";
+        }
+        document.body.id = "menu";
+        document.getElementById("mainMenuHC").id = "mainMenu";
+        document.getElementById("menuTitleHC").id = "menuTitle";
+        document.getElementById("helpContentHC").id = "helpContent";
+        document.getElementById("hcEnabled").checked = false;
+        window.localStorage.setItem("hcEnabled", 0);
+    }
+</script>
+</html>

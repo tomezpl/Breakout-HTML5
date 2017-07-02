@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breakout</title>
+    <link rel="stylesheet" type="text/css" href="breakout.css">
+</head>
+<body id="menu">
+    <h1 id="gameTitle">Breakout</h1>
+    <!--<abbr title="Reference to &quot;A HIDEO KOJIMA GAME&quot;"><span id="gameAuthor"><h1>A</h1> <h1>Tomasz Zajac</h1> <h1>game</h1></span></abbr>-->
+    <div id="mainMenu">
+        <div id="menuTitle">
+            <h1 class="leftAlign">Main</h1>
+            <h1 class="rightAlign">Menu</h1>
+        </div>
+        <div id="menuButtons">
+            <input type="checkbox" id="hcEnabled" title="Is high-contrast mode enabled?"><span>High-contrast mode</span>
+            
+            <a href="breakout.html">
+                <div class="menuBtn">
+                    Start Game
+                </div>
+            </a>
+            <a href="help.html">
+                <div class="menuBtn">
+                    Help
+                </div>
+            </a>
+            <a href="javascript:exitGame();">
+                <div class="menuBtn">
+                    Exit
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+<script>
+    function exitGame()
+    {
+        window.close();
+    }
+    
+    function enableHC()
+    {
+        var btns = document.getElementsByTagName("a");
+        console.log(btns);
+        console.log(btns.length);
+        for(var i = 0; i < btns.length; i++)
+        {
+            if(btns[i].childNodes[1].className == "menuBtn")
+                btns[i].childNodes[1].className = "menuBtnHC";
+        }
+        document.body.id = "menuHC";
+        document.getElementById("mainMenu").id = "mainMenuHC";
+        document.getElementById("menuTitle").id = "menuTitleHC";
+        document.getElementById("hcEnabled").checked = true;
+        window.localStorage.setItem("hcEnabled", 1);
+        console.log(btns);
+    }
+    
+    function disableHC()
+    {
+        var btns = document.getElementsByTagName("a");
+        for(var i = 0; i < btns.length; i++)
+        {
+            if(btns[i].childNodes[1].className == "menuBtnHC")
+                btns[i].childNodes[1].className = "menuBtn";
+        }
+        document.body.id = "menu";
+        document.getElementById("mainMenuHC").id = "mainMenu";
+        document.getElementById("menuTitleHC").id = "menuTitle";
+        document.getElementById("hcEnabled").checked = false;
+        window.localStorage.setItem("hcEnabled", 0);
+    }
+    
+    addEventListener("load", function()
+    {
+        // Left for web server scripting
+        /*
+        // Check if high contrast mode was enabled previously
+        if(window.localStorage.getItem("hcEnabled") == 1)
+            enableHC();
+        */
+    });
+    
+    document.getElementById("hcEnabled").addEventListener("click", function()
+    {
+        var chkbox = document.getElementById("hcEnabled");
+        if(chkbox.checked)
+            enableHC();
+        else
+            disableHC();
+    });
+</script>
+</html>
