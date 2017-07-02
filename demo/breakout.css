@@ -1,0 +1,267 @@
+#canvasContainer {
+    margin: 0 auto;
+    width: 1280px;
+}
+
+/* Applies background to the game canvas,
+ * the main menu page's <body> element
+ * and the help page's <body> element
+ * (main menu and help page share the ID) */
+#canvas, #menu {
+    /* Goes from a lightblue at the bottom to a darker shade of blue at the top */
+    background: linear-gradient(to bottom, rgb(19, 126, 206), lightblue);
+}
+
+#menuHC {
+    background: black;
+}
+
+#game {
+    margin: 0;
+}
+
+/* Sets the background gradient to cover
+ * the whole <body> of the main menu 
+ * and help pages. Also removes body margins
+ * and sets the font to a default sans-serif font
+ * and the font colour to white */
+#menu, #menuHC {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+    margin: 0;
+    font-family: sans-serif;
+    color: white;
+}
+
+/* Main/help menu content box
+ * This will contain buttons,
+ * help text, etc. */
+#mainMenu, #mainMenuHC {
+    position: relative;
+
+    /* Grey/slightly-blue-ish colour
+     * so the box appears transparent */
+    background-color: rgba(48, 96, 144, 32);
+    width: 680px;
+    min-height: 480px;
+    
+    /* Setting margin to "auto"
+     * centers the box horizontally */
+    margin: auto;
+    margin-top: 90px;
+    
+    /* Small padding at the bottom, 
+     * otherwise the last button touches
+     * the bottom edge of the box
+     * and is hard to see */
+    padding-bottom: 1px;
+}
+
+#mainMenuHC {
+    background-color: rgba(16, 16, 16, 255);
+}
+
+/* Center the buttons
+ * vertically and horizontally
+ * inside the box */
+#mainMenu #menuButtons, #mainMenuHC #menuButtons {
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.menuBtn, .menuBtnHC {
+    /* Slightly brighter background colour than the menu box */
+    background-color: rgba(64, 112, 160, 32);
+    width: auto;
+    min-width: 60px;
+    max-width: 240px;
+    margin: 24px;
+    padding: 8px 16px;
+    
+    /* Apply 1 second eased transition
+     * to all properties */
+    transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+}
+
+.menuBtnHC, #helpContentHC {
+    background-color: rgba(32, 32, 32, 255);
+}
+
+/* Add a small vertical margin
+ * for buttons inside the box */
+.menuBtn, .menuBtnHC {
+    margin: 24px auto;
+}
+
+#hcEnabled {
+    margin: 0px auto;
+    vertical-align: middle;
+}
+
+/* Brighten the background colour
+ * add slight shadow on the text
+ * if mouse hovers over a button */
+.menuBtn:hover {
+    background-color: rgba(128, 176, 196, 32);
+    text-shadow: 1px 1px 5px black;
+}
+
+.menuBtnHC:hover {
+    background-color: rgba(48, 48, 48, 255);
+    text-shadow: 1px 1px 5px black;
+}
+
+/* When button is clicked go back
+ * to original background colour */
+.menuBtn:active {
+    background-color: rgba(64, 112, 160, 32);
+}
+
+.menuBtnHC:active {
+    background-color: rgba(144, 144, 144, 255);
+}
+
+/* Set the links in the menu
+ * to have white colour,
+ * no underline,
+ * align to centre
+ * and set a maximum width */
+#mainMenu a, #mainMenuHC a {
+    text-decoration: none;
+    text-align: center;
+    font-size: 24pt;
+    max-width: 240px;
+}
+
+#mainMenu a {
+    color: white;
+}
+
+#mainMenuHC a {
+    color: yellow;
+}
+
+/* Set font properties
+ * for the game title,
+ * make it bigger to stand out */
+#gameTitle {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 64pt;
+    margin-left: 20px;
+    margin-bottom: 0px;
+}
+
+/* The game title and author text
+ * share the shadow, uppercase letters,
+ * and no margin at top */
+#gameTitle, #gameAuthor h1 {
+    text-shadow: 2px 2px 5px black;
+    text-transform: uppercase;
+    margin-top: 0px;
+}
+
+/* The game author text contains
+ * three <h1> elements and they
+ * need to be in the same line. */
+#gameAuthor h1 {
+    display: inline;
+    margin-left: 5px;
+    margin-top: 0px;
+    vertical-align: middle;
+}
+
+/* Bigger margin from the left
+ * so it appears centered
+ * under the game title. */
+#gameAuthor h1:first-child {
+    margin-left: 55px;
+}
+
+/* The <h1> in the middle is 
+ * the game author's name
+ * so it will be bigger than
+ * the first and the last
+ * to stand out */
+#gameAuthor h1:first-child, #gameAuthor h1:last-child {
+    font-weight: normal;
+    font-size: 20pt;
+}
+
+/* Title text in the box
+ * (e.g. "Main Menu" or "Help")
+ * Make it 45% width and centered */
+#menuTitle, #menuTitleHC {
+    width: 45%;
+    margin: 0 auto;
+    position: relative;
+    top: 15px;
+}
+
+/* Make the title text of the menu
+ * uppercase and italic
+ * (inside a <div> so no margins) */
+#menuTitle h1, #menuTitleHC h1 {
+    text-transform: uppercase;
+    font-size: 36pt;
+    margin: 0 0;
+    font-style: italic;
+}
+
+#menuTitleHC h1 {
+    color: #ff7a7a;
+}
+
+/* Classes to easily align text elements */
+
+.leftAlign {
+    text-align: left;
+}
+
+.centerAlign {
+    text-align: center;
+}
+
+.rightAlign {
+    text-align: right;
+}
+
+/* Textarea containing the help text
+ * same background as the menu box
+ * no border, fit to menu box width,
+ * set font to sans-serif and white */
+#helpContent, #helpContentHC {
+    min-width: 100%;
+    min-height: 300px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    box-sizing: border-box;
+    border: none;
+    font-family: sans-serif;
+    color: white;
+    font-size: 20pt;
+    max-width: 100%;
+}
+
+#helpContent {
+    background-color: rgba(48, 96, 144, 32);
+}
+
+/* A "Good luck" text on the help screen
+ * Make it italic and in bottom right 
+ * of the menu box */
+#goodLuck {
+    font-size: 24pt;
+    font-style: italic;
+    position: absolute;
+    bottom: 95px;
+    right: 15px;
+}
